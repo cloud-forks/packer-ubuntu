@@ -1,0 +1,75 @@
+{
+  "builders": [
+    {
+      "accelerator": "kvm",
+      "boot_command": [
+        "<esc><esc><enter><wait>",
+        "/install/vmlinuz auto",
+        " console-setup/ask_detect=false <wait>",
+        " console-setup/layoutcode=us <wait>",
+        " console-setup/modelcode=pc105 <wait>",
+        " debconf/frontend=noninteractive <wait>",
+        " debian-installer=en_US <wait>",
+        " fb=false",
+        " initrd=/install/initrd.gz",
+        " kbd-chooser/method=us",
+        " keyboard-configuration/layout=USA <wait>",
+        " keyboard-configuration/variant=USA <wait>",
+        " locale=en_US <wait>",
+        " netcfg/get_domain=vm <wait>",
+        " netcfg/get_hostname=build <wait>",
+        " noapic <wait>",
+        " preseed/url=http://{{ .HTTPIP }}:{{ .HTTPPort }}/preseed.cfg",
+        " -- ",
+        "<enter>"
+      ],
+      "floppy_files": [
+          "files/"
+      ],
+      "boot_wait": "10s",
+      "disk_interface": "scsi",
+      "disk_size": 5000,
+      "format": "raw",
+      "headless": true,
+      "http_directory": "http",
+      "iso_checksum": "5dd72c694c3a7e06a3b4dd651ca26cfc70985004",
+      "iso_checksum_type": "sha1",
+      "iso_url": "http://releases.ubuntu.com/13.10/ubuntu-13.10-server-amd64.iso",
+      "net_device": "virtio-net",
+      "output_directory": "image/13.10/x86_64/qemu/",
+      "qemuargs": [
+        [
+          "-device",
+          "virtio-scsi-pci,id=scsi0"
+        ],
+        [
+          "-drive",
+          "if=none,cache=unsafe,id=drive0,discard=unmap,file=image/13.10/x86_64/qemu/ubuntu-13.10-x86_64.raw"
+        ],
+        [
+          "-device",
+          "scsi-hd,bus=scsi0.0,drive=drive0"
+        ],
+        [
+          "-device",
+          "virtio-net,netdev=user.0"
+        ]
+      ],
+      "shutdown_command": "shutdown -h now",
+      "ssh_password": "build",
+      "ssh_username": "root",
+      "ssh_wait_timeout": "10000s",
+      "type": "qemu",
+      "vm_name": "ubuntu-13.10-x86_64"
+    }
+  ],
+  "provisioners": [
+    {
+      "scripts": [
+        "scripts/base.sh",
+        "scripts/cleanup.sh"
+      ],
+      "type": "shell"
+    }
+  ]
+}
