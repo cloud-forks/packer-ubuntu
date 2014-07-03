@@ -36,7 +36,7 @@
       "iso_checksum_type": "sha1",
       "iso_url": "http://releases.ubuntu.com/14.04/ubuntu-14.04-server-amd64.iso",
       "net_device": "virtio-net",
-      "output_directory": "image/14.04/x86_64/qemu/",
+      "output_directory": "images/14.04/x86_64/qemu/",
       "qemuargs": [
         [
           "-device",
@@ -44,7 +44,7 @@
         ],
         [
           "-drive",
-          "if=none,cache=unsafe,id=drive0,discard=unmap,file=image/14.04/x86_64/qemu/ubuntu-14.04-x86_64.raw"
+          "if=none,cache=unsafe,id=drive0,discard=unmap,file=images/14.04/x86_64/qemu/ubuntu-14.04-x86_64.raw"
         ],
         [
           "-device",

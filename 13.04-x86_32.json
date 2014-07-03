@@ -52,7 +52,7 @@
   ],
   "post-processors": [
     {
-      "output": "../../image/{{.Provider}}-{{ .NAME }}",
+      "output": "../../images/{{.Provider}}-{{ .NAME }}",
       "keep_input_artifact": false,
       "type": "vagrant"
     }

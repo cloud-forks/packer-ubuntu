@@ -36,7 +36,7 @@
       "iso_checksum_type": "sha1",
       "iso_url": "http://releases.ubuntu.com/13.10/ubuntu-13.10-server-amd64.iso",
       "net_device": "virtio-net",
-      "output_directory": "image/13.10/x86_64/qemu/",
+      "output_directory": "images/13.10/x86_64/qemu/",
       "qemuargs": [
         [
           "-device",
@@ -44,7 +44,7 @@
         ],
         [
           "-drive",
-          "if=none,cache=unsafe,id=drive0,discard=unmap,file=image/13.10/x86_64/qemu/ubuntu-13.10-x86_64.raw"
+          "if=none,cache=unsafe,id=drive0,discard=unmap,file=images/13.10/x86_64/qemu/ubuntu-13.10-x86_64.raw"
         ],
         [
           "-device",
