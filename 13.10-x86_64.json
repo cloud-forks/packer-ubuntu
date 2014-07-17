@@ -24,7 +24,7 @@
         "<enter>"
       ],
       "floppy_files": [
-          "files/"
+          "floppy/*"
       ],
       "boot_wait": "10s",
       "disk_interface": "scsi",
@@ -36,7 +36,7 @@
       "iso_checksum_type": "sha1",
       "iso_url": "http://releases.ubuntu.com/13.10/ubuntu-13.10-server-amd64.iso",
       "net_device": "virtio-net",
-      "output_directory": "images/13.10/x86_64/qemu/",
+      "output_directory": "output/ubuntu-13.10-x86_64-qemu/",
       "qemuargs": [
         [
           "-device",
@@ -44,7 +44,7 @@
         ],
         [
           "-drive",
-          "if=none,cache=unsafe,id=drive0,discard=unmap,file=images/13.10/x86_64/qemu/ubuntu-13.10-x86_64.raw"
+          "if=none,cache=unsafe,id=drive0,discard=unmap,file=output/ubuntu-13.10-x86_64-qemu/ubuntu-13.10-x86_64.raw"
         ],
         [
           "-device",
@@ -70,6 +70,19 @@
         "scripts/cleanup.sh"
       ],
       "type": "shell"
+    }
+  ],
+  "post-processors": [
+    { 
+      "type": "strip",
+      "keep_input_artifact": false,
+      "output": "output/ubuntu-13.10-x86_64-strip/"
+    },
+    { 
+      "type": "compress",
+      "format": "gzip",
+      "keep_input_artifact": false,
+      "output": "output/ubuntu-13.10-x86_64-compress/"
     }
   ]
 }
