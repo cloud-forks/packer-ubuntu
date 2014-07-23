@@ -37,10 +37,6 @@ rm -f /home/vagrant/.bash_history
 # Clean up log files
 find /var/log -type f | while read f; do echo -ne '' > $f; done;
 
-# Zero out the free space to save space in the final image
-dd if=/dev/zero of=/EMPTY bs=1M || echo clean
-rm -f /EMPTY
-
 # Make sure we wait until all the data is written to disk, otherwise
 # Packer might quite too early before the large files are deleted
 sync

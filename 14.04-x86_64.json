@@ -39,6 +39,10 @@
       "output_directory": "output/ubuntu-14.04-x86_64-qemu/",
       "qemuargs": [
         [
+          "-m",
+          "size=512Mib"
+        ],
+        [
           "-device",
           "virtio-scsi-pci,id=scsi0"
         ],
@@ -75,13 +79,11 @@
   "post-processors": [
     {
       "type": "strip",
-      "keep_input_artifact": false,
       "output": "output/ubuntu-14.04-x86_64-strip/"
     },
     {
       "type": "compress",
       "format": "gzip",
-      "keep_input_artifact": false,
       "output": "output/ubuntu-14.04-x86_64-compress/"
     }
   ]
