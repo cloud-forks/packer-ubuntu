@@ -40,7 +40,7 @@
       "qemuargs": [
         [
           "-m",
-          "size=512Mib"
+          "512m"
         ],
         [
           "-device",
