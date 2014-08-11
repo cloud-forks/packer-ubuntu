@@ -40,7 +40,7 @@
       "qemuargs": [
         [
           "-m",
-          "512m"
+          "512"
         ],
         [
           "-device",
@@ -77,14 +77,16 @@
     }
   ],
   "post-processors": [
-    { 
-      "type": "strip",
-      "output": "output/ubuntu-13.10-x86_64-strip/"
-    },
-    { 
-      "type": "compress",
-      "format": "gzip",
-      "output": "output/ubuntu-13.10-x86_64-compress/"
-    }
+    [
+      { 
+        "type": "strip",
+        "output": "output/ubuntu-13.10-x86_64-strip/"
+      },
+      { 
+        "type": "compress",
+        "format": "gzip",
+        "output": "output/ubuntu-13.10-x86_64-compress/"
+      }
+    ]
   ]
 }
