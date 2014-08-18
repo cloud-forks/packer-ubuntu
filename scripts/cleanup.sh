@@ -18,13 +18,37 @@ fi
 echo "==> Cleaning up tmp"
 rm -rf /tmp/*
 
-apt-get -y --force-yes purge $(dpkg --list |grep '^rc' |awk '{print $2}')
-apt-get -y --force-yes purge $(dpkg --list |egrep 'linux-image-[0-9]' |awk '{print $3,$2}' |sort -nr |tail -n +2 |grep -v $(uname -r) |awk '{ print $2}')
-apt-get -y --force-yes autoremove --purge
-apt-get -y --force-yes clean
-apt-get -y autoclean
+uname -a
+export APT_LISTCHANGES_FRONTEND=none
+DEBIAN_FRONTEND=noninteractive apt-get -o Dpkg::Options::="--force-confnew" --force-yes -fuy purge $(dpkg --list | grep '^rc' |awk '{print $2}')
+DEBIAN_FRONTEND=noninteractive apt-get -o Dpkg::Options::="--force-confnew" --force-yes -fuy purge $(dpkg --list | awk -v image="$(uname -r)" '/linux-image-[0-9]/{if($0 !~ image) print $2 }')
+DEBIAN_FRONTEND=noninteractive apt-get -o Dpkg::Options::="--force-confnew" --force-yes -fuy autoremove --purge
+DEBIAN_FRONTEND=noninteractive apt-get -o Dpkg::Options::="--force-confnew" --force-yes -y clean
+DEBIAN_FRONTEND=noninteractive apt-get -o Dpkg::Options::="--force-confnew" --force-yes -y autoclean
 
+
+update-initramfs -u
 update-grub
+
+
+
+cat <<EOF > /etc/resolv.conf
+nameserver 2001:4860:4860::8888
+nameserver 2001:4860:4860::8844
+nameserver 8.8.8.8
+nameserver 8.8.4.4
+options timeout:2 attempts:1 rotate
+EOF
+
+cat <<EOF > /etc/network/interfaces
+auto lo
+iface lo inet loopback
+
+auto eth0
+iface eth0 inet6 auto
+iface eth0 inet dhcp
+dns-nameservers 2001:4860:4860::8888 2001:4860:4860::8844 8.8.8.8 8.8.4.4
+EOF
 
 echo "==> Installed packages"
 dpkg --get-selections | grep -v deinstall
@@ -41,5 +65,5 @@ find /var/log -type f | while read f; do echo -ne '' > $f; done;
 # Packer might quite too early before the large files are deleted
 sync
 
-echo finish
+
 
