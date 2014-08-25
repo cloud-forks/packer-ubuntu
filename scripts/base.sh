@@ -6,7 +6,6 @@ net.ipv6.conf.default.use_tempaddr = 0
 EOF
 
 apt-get -y --force-yes update
-apt-get -y --force-yes install qemu-guest-agent
 apt-get -y --force-yes dist-upgrade
 
 cat <<EOF > /etc/fstab
