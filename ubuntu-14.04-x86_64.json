@@ -2,7 +2,7 @@
   "builders": [
      {
       "type": "digitalocean",
-      "image": "12",
+      "image": "26",
       "region": "base",
       "size": "1"
     },
