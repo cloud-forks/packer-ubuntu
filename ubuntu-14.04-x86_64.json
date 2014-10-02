@@ -1,5 +1,11 @@
 {
   "builders": [
+     {
+      "type": "digitalocean",
+      "image": "12",
+      "region": "base",
+      "size": "1"
+    },
     {
       "accelerator": "kvm",
       "boot_command": [
@@ -87,12 +93,14 @@
     [
       {
         "type": "strip",
-        "output": "output/ubuntu-14.04-x86_64-strip/"
+        "output": "output/ubuntu-14.04-x86_64-strip/",
+        "only": ["qemu"]
       },
       {
         "type": "compress",
         "format": "gzip",
-        "output": "output/ubuntu-14.04-x86_64-compress/"
+        "output": "output/ubuntu-14.04-x86_64-compress/",
+        "only": ["qemu"]
       }
     ]
   ]
