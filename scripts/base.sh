@@ -7,6 +7,7 @@ EOF
 
 apt-get -y --force-yes update
 apt-get -y --force-yes dist-upgrade
+apt-get -y --force-yes install curl
 
 cat <<EOF > /etc/fstab
 # /etc/fstab: static file system information.
