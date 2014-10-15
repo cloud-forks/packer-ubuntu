@@ -42,11 +42,11 @@
       "iso_checksum_type": "sha1",
       "iso_url": "http://releases.ubuntu.com/14.04/ubuntu-14.04-server-amd64.iso",
       "net_device": "virtio-net",
-      "output_directory": "output/ubuntu-14.04-x86_64-qemu/",
+      "output_directory": "output/ubuntu-wordpress-x86_64-qemu/",
       "qemuargs": [
         [
           "-m",
-          "512"
+          "2048"
         ],
         [
           "-device",
@@ -54,7 +54,7 @@
         ],
         [
           "-drive",
-          "if=none,cache=unsafe,id=drive0,discard=unmap,file=output/ubuntu-14.04-x86_64-qemu/ubuntu-14.04-x86_64.raw"
+          "if=none,cache=unsafe,id=drive0,discard=unmap,file=output/ubuntu-wordpress-x86_64-qemu/ubuntu-wordpress-x86_64.raw"
         ],
         [
           "-device",
@@ -64,7 +64,7 @@
           "-device",
           "virtio-net,netdev=user.0"
         ],
-        [
+        [  
           "-machine",
           "type=pc,accel=kvm"
         ]
@@ -74,7 +74,7 @@
       "ssh_username": "root",
       "ssh_wait_timeout": "10000s",
       "type": "qemu",
-      "vm_name": "ubuntu-14.04-x86_64"
+      "vm_name": "ubuntu-wordpress-x86_64"
     }
   ],
   "provisioners": [
@@ -83,6 +83,13 @@
         "scripts/base.sh",
         "scripts/reboot.sh"
       ],
+      "type": "shell"
+    },
+    {
+      "scripts": [
+        "scripts/wordpress.sh"
+      ],
+      "pause_before": "30s",
       "type": "shell"
     },
     {
@@ -98,7 +105,7 @@
       {
         "type": "compress",
         "format": "gzip",
-        "output": "output/ubuntu-14.04-x86_64-compress/",
+        "output": "output/ubuntu-wordpress-x86_64-compress/",
         "only": ["qemu"]
       }
     ]

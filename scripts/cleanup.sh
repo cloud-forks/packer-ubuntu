@@ -102,3 +102,5 @@ echo "==> Removing any docs"
 rm -rf /usr/share/doc/*
 echo "==> Removing caches"
 find /var/cache -type f -exec rm -rf {} \;
+
+fstrim -v /
