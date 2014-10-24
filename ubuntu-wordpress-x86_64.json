@@ -1,11 +1,5 @@
 {
   "builders": [
-     {
-      "type": "digitalocean",
-      "image": "26",
-      "region": "base",
-      "size": "1"
-    },
     {
       "accelerator": "kvm",
       "boot_command": [
@@ -34,7 +28,7 @@
       ],
       "boot_wait": "5s",
       "disk_interface": "scsi",
-      "disk_size": 5000,
+      "disk_size": 8000,
       "format": "raw",
       "headless": true,
       "http_directory": "http",
@@ -46,7 +40,7 @@
       "qemuargs": [
         [
           "-m",
-          "2048"
+          "1500"
         ],
         [
           "-device",
@@ -88,13 +82,6 @@
     {
       "scripts": [
         "scripts/wordpress.sh"
-      ],
-      "pause_before": "30s",
-      "type": "shell"
-    },
-    {
-      "scripts": [
-        "scripts/cleanup.sh"
       ],
       "pause_before": "30s",
       "type": "shell"

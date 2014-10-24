@@ -1,10 +1,5 @@
 #!/bin/sh -ex
 
-cat <<EOF > /etc/sysctl.d/9999_ipv6.conf
-net.ipv6.conf.all.use_tempaddr = 0
-net.ipv6.conf.default.use_tempaddr = 0
-EOF
-
 apt-get -y --force-yes update
 apt-get -y --force-yes dist-upgrade
 apt-get -y --force-yes install curl
@@ -39,4 +34,5 @@ auto eth0
 iface eth0 inet6 auto
 iface eth0 inet dhcp
 dns-nameservers 2001:4860:4860::8888 2001:4860:4860::8844 8.8.8.8 8.8.4.4
+
 EOF
