@@ -23,12 +23,10 @@
         " -- ",
         "<enter>"
       ],
-      "floppy_files": [
-          "floppy/*"
-      ],
       "boot_wait": "5s",
       "disk_interface": "scsi",
       "disk_size": 5000,
+      "disk_cache": "unsafe",
       "format": "raw",
       "headless": true,
       "http_directory": "http",
@@ -37,6 +35,7 @@
       "iso_url": "http://releases.ubuntu.com/14.10/ubuntu-14.10-server-amd64.iso",
       "net_device": "virtio-net",
       "output_directory": "output/ubuntu-14.10-x86_64-qemu/",
+      "machine_type": "pc-i440fx-1.7",
       "qemuargs": [
         [
           "-m",
@@ -57,10 +56,6 @@
         [
           "-device",
           "virtio-net,netdev=user.0"
-        ],
-        [
-          "-machine",
-          "type=pc,accel=kvm"
         ]
       ],
       "shutdown_command": "shutdown -h now",
