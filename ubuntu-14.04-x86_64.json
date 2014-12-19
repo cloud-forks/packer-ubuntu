@@ -1,11 +1,5 @@
 {
   "builders": [
-     {
-      "type": "digitalocean",
-      "image": "26",
-      "region": "base",
-      "size": "1"
-    },
     {
       "accelerator": "kvm",
       "boot_command": [
