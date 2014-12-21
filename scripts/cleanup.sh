@@ -46,10 +46,6 @@ find /var/log -type f | while read f; do echo -ne '' > $f; done;
 # Packer might quite too early before the large files are deleted
 sync
 
-
-
-#!/bin/bash -eux
-
 echo "==> Installed packages before cleanup"
 dpkg --get-selections | grep -v deinstall
 
@@ -103,4 +99,4 @@ rm -rf /usr/share/doc/*
 echo "==> Removing caches"
 find /var/cache -type f -exec rm -rf {} \;
 
-fstrim -v /
+fstrim -v / || echo dummy
