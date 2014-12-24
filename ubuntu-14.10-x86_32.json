@@ -30,11 +30,11 @@
       "format": "raw",
       "headless": true,
       "http_directory": "http",
-      "iso_checksum": "91bd1cfba65417bfa04567e4f64b5c55",
+      "iso_checksum": "1c920941d2544c0e097deb79cf3ebfbd",
       "iso_checksum_type": "md5",
-      "iso_url": "http://releases.ubuntu.com/14.10/ubuntu-14.10-server-amd64.iso",
+      "iso_url": "http://releases.ubuntu.com/14.10/ubuntu-14.10-server-i386.iso",
       "net_device": "virtio-net",
-      "output_directory": "output/ubuntu-14.10-x86_64-qemu/",
+      "output_directory": "output/ubuntu-14.10-x86_32-qemu/",
       "machine_type": "pc-i440fx-1.7",
       "qemuargs": [
         [
@@ -47,7 +47,7 @@
         ],
         [
           "-drive",
-          "if=none,cache=unsafe,id=drive0,discard=unmap,file=output/ubuntu-14.10-x86_64-qemu/ubuntu-14.10-x86_64.raw"
+          "if=none,cache=unsafe,id=drive0,discard=unmap,file=output/ubuntu-14.10-x86_32-qemu/ubuntu-14.10-x86_32.raw"
         ],
         [
           "-device",
@@ -63,7 +63,7 @@
       "ssh_username": "root",
       "ssh_wait_timeout": "10000s",
       "type": "qemu",
-      "vm_name": "ubuntu-14.10-x86_64"
+      "vm_name": "ubuntu-14.10-x86_32"
     }
   ],
   "provisioners": [
@@ -87,7 +87,7 @@
       {
         "type": "compress",
         "format": "pgzip",
-        "output": "output/ubuntu-14.10-x86_64-compress/",
+        "output": "output/ubuntu-14.10-x86_32-compress/",
         "only": ["qemu"]
       }
     ]
