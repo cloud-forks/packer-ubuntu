@@ -19,7 +19,7 @@
         " netcfg/get_domain=localdomain <wait>",
         " netcfg/get_hostname=localhost <wait>",
         " noapic <wait>",
-        " preseed/url=http://{{ .HTTPIP }}:{{ .HTTPPort }}/14.04.cfg",
+        " preseed/url=http://{{ .HTTPIP }}:{{ .HTTPPort }}/12.04.cfg",
         " -- ",
         "<enter>"
       ],
@@ -33,11 +33,11 @@
       "format": "raw",
       "headless": true,
       "http_directory": "http",
-      "iso_checksum": "01545fa976c8367b4f0d59169ac4866c",
+      "iso_checksum": "0081e57fb8c7e4094fb9767384f087c6",
       "iso_checksum_type": "md5",
-      "iso_url": "http://releases.ubuntu.com/14.04/ubuntu-14.04-server-amd64.iso",
+      "iso_url": "http://releases.ubuntu.com/12.04/ubuntu-12.04.4-server-i386.iso",
       "net_device": "virtio-net",
-      "output_directory": "output/ubuntu-14.04-x86_64-qemu/",
+      "output_directory": "output/ubuntu-12.04-x86_32-qemu/",
       "machine_type": "pc-i440fx-1.7",
       "qemuargs": [
         [
@@ -50,7 +50,7 @@
         ],
         [
           "-drive",
-          "if=none,cache=unsafe,id=drive0,discard=unmap,file=output/ubuntu-14.04-x86_64-qemu/ubuntu-14.04-x86_64.raw"
+          "if=none,cache=unsafe,id=drive0,discard=unmap,file=output/ubuntu-12.04-x86_32-qemu/ubuntu-12.04-x86_32.raw"
         ],
         [
           "-device",
@@ -66,20 +66,7 @@
       "ssh_username": "root",
       "ssh_wait_timeout": "10000s",
       "type": "qemu",
-      "vm_name": "ubuntu-14.04-x86_64"
-    },
-    {
-      "vm_name": "ubuntu-14.04-x86_64",
-      "type": "lxc",
-      "img_urls": [ "http://cloud-images.ubuntu.com/trusty/current/trusty-server-cloudimg-amd64-root.tar.gz" ],
-      "img_checksum_type": "md5",
-      "img_checksum": "eeb9d76f1a752c77eca592739330d291",
-      "arch": "x86_64",
-      "hostname": "packer",
-      "boot_wait": "10s",
-      "init_command": "/sbin/init",
-      "autodev": 1,
-      "output_directory": "output/ubuntu-14.04-x86_64-lxc/"
+      "vm_name": "ubuntu-12.04-x86_32"
     }
   ],
   "provisioners": [
@@ -104,7 +91,7 @@
       {
         "type": "compress",
         "format": "pgzip",
-        "output": "output/ubuntu-14.04-x86_64-compress/",
+        "output": "output/ubuntu-12.04-x86_32-compress/",
         "only": ["qemu"]
       }
     ]
