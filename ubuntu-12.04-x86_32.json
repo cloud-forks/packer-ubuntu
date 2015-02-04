@@ -78,11 +78,17 @@
       "type": "shell"
     },
     {
+      "pause_before": "30s",
+      "type": "file",
+      "source": "files/",
+      "destination": "/tmp/"
+    },
+    {
       "scripts": [
         "scripts/cleanup.sh",
+        "scripts/cloudinit.sh",
         "scripts/cloudinit-config.sh"
       ],
-      "pause_before": "30s",
       "type": "shell"
     }
   ],
