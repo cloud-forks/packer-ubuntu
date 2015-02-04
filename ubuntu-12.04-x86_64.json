@@ -67,19 +67,6 @@
       "ssh_wait_timeout": "10000s",
       "type": "qemu",
       "vm_name": "ubuntu-12.04-x86_64"
-    },
-    {
-      "vm_name": "ubuntu-14.04-x86_64",
-      "type": "lxc",
-      "img_urls": [ "http://cloud-images.ubuntu.com/trusty/current/trusty-server-cloudimg-amd64-root.tar.gz" ],
-      "img_checksum_type": "md5",
-      "img_checksum": "eeb9d76f1a752c77eca592739330d291",
-      "arch": "x86_64",
-      "hostname": "packer",
-      "boot_wait": "10s",
-      "init_command": "/sbin/init",
-      "autodev": 1,
-      "output_directory": "output/ubuntu-14.04-x86_64-lxc/"
     }
   ],
   "provisioners": [
