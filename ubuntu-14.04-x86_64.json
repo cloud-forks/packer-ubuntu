@@ -76,9 +76,10 @@
       "img_checksum": "eeb9d76f1a752c77eca592739330d291",
       "arch": "x86_64",
       "hostname": "packer",
-      "boot_wait": "10s",
+      "boot_wait": "5s",
       "init_command": "/sbin/init",
       "autodev": 1,
+      "http_directory": "http",
       "output_directory": "output/ubuntu-14.04-x86_64-lxc/"
     }
   ],

@@ -1,6 +1,13 @@
-#!/bin/bash -ex
+#!/bin/sh -e
 
-# Make sure udev does not block our network - http://6.ptmc.org/?p=164
+cat <<EOF > /etc/resolv.conf
+#nameserver 2001:4860:4860::8888
+#nameserver 2001:4860:4860::8844
+nameserver 8.8.8.8
+nameserver 8.8.4.4
+options timeout:2 attempts:1 rotate
+EOF
+
 echo "==> Cleaning up udev rules"
 rm -rf /dev/.udev/
 test -f /lib/udev/rules.d/75-persistent-net-generator.rules && rm /lib/udev/rules.d/75-persistent-net-generator.rules
@@ -27,9 +34,10 @@ DEBIAN_FRONTEND=noninteractive apt-get -o Dpkg::Options::="--force-confnew" --fo
 DEBIAN_FRONTEND=noninteractive apt-get -o Dpkg::Options::="--force-confnew" --force-yes -y clean
 DEBIAN_FRONTEND=noninteractive apt-get -o Dpkg::Options::="--force-confnew" --force-yes -y autoclean
 
-
-update-initramfs -u
-update-grub
+if [ "x${PACKER_BUILD_TYPE}" = "xqemu" ]; then
+    update-initramfs -u
+    update-grub
+fi
 
 echo "==> Installed packages"
 dpkg --get-selections | grep -v deinstall
