@@ -3,6 +3,6 @@
     "compress": "packer-post-processor-compress"
   },
   "builders": {
-    "lxc": "packer-builder-lxc"
+    "libvirt": "packer-builder-libvirt"
   }
 }

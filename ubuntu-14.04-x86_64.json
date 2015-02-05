@@ -70,7 +70,8 @@
     },
     {
       "vm_name": "ubuntu-14.04-x86_64",
-      "type": "lxc",
+      "uri": "lxc:///",
+      "type": "libvirt",
       "img_urls": [ "http://cloud-images.ubuntu.com/trusty/current/trusty-server-cloudimg-amd64-root.tar.gz" ],
       "img_checksum_type": "md5",
       "img_checksum": "eeb9d76f1a752c77eca592739330d291",
