@@ -72,14 +72,15 @@
       "vm_name": "ubuntu-14.04-x86_64",
       "uri": "lxc:///",
       "type": "libvirt",
-      "img_urls": [ "http://cloud-images.ubuntu.com/trusty/current/trusty-server-cloudimg-amd64-root.tar.gz" ],
-      "img_checksum_type": "md5",
-      "img_checksum": "eeb9d76f1a752c77eca592739330d291",
-      "arch": "x86_64",
-      "hostname": "packer",
+      "iso_urls": [ "http://cloud-images.ubuntu.com/trusty/current/trusty-server-cloudimg-amd64-root.tar.gz" ],
+      "iso_checksum_type": "md5",
+      "iso_checksum": "eeb9d76f1a752c77eca592739330d291",
+      "domain": {
+          "arch": "x86_64",
+          "init": "/sbin/init"
+      },
+      "domain_type": "lxc", 
       "boot_wait": "5s",
-      "init_command": "/sbin/init",
-      "autodev": 1,
       "http_directory": "http",
       "output_directory": "output/ubuntu-14.04-x86_64-lxc/"
     }
