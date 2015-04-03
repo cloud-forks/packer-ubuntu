@@ -1,7 +1,1 @@
-#!/bin/sh -e
-
-apt-get update
-apt-get install -y software-properties-common python-jsonpatch python-prettytable python-setuptools python-requests python-serial
-dpkg -i /tmp/cloud-init_0.7.5-0ubuntu1_all.deb
-rm -f /tmp/cloud-init_0.7.5-0ubuntu1_all.deb
-rm -f /etc/cloud/cloud.cfg.d/90_dpkg.cfg
+../../../common/cloudinit.sh
