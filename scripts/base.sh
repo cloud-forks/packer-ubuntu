@@ -15,8 +15,13 @@ apt-get -y --force-yes install curl
 if [ "x${PACKER_BUILD_TYPE}" = "xqemu" ]; then
     apt-get -y --force-yes install grub-pc
     export DEBIAN_FRONTEND=noninteractive DEBCONF_NONINTERACTIVE_SEEN=true
-    sed -i 's|#GRUB_DISABLE_LINUX_UUID=true|GRUB_DISABLE_LINUX_UUID=true|g' /etc/default/grub
     dpkg-reconfigure grub-pc
+    sed -i 's|#GRUB_DISABLE_LINUX_UUID=true|GRUB_DISABLE_LINUX_UUID=true|g' /etc/default/grub
+    sed -i 's|#GRUB_DISABLE_RECOVERY="true"|GRUB_DISABLE_RECOVERY="true"|g' /etc/default/grub
+    sed -i 's|GRUB_TIMEOUT=10|GRUB_TIMEOUT=5|g' /etc/default/grub
+    sed -i 's|GRUB_CMDLINE_LINUX=""|GRUB_CMDLINE_LINUX="consoleblank=0"|g' /etc/default/grub
+    sed -i 's|GRUB_CMDLINE_LINUX_DEFAULT="quiet"|GRUB_CMDLINE_LINUX_DEFAULT="consoleblank=0"|g' /etc/default/grub
+    update-grub
 fi
 
 cat <<EOF > /etc/fstab
