@@ -12,7 +12,7 @@ apt-get -y --force-yes update
 apt-get -y --force-yes dist-upgrade
 apt-get -y --force-yes install curl
 
-if [ "x${PACKER_BUILD_TYPE}" == "xqemu" ]; then
+#if [ "x${PACKER_BUILD_TYPE}" == "xqemu" ]; then
     apt-get -y --force-yes install grub-pc
     export DEBIAN_FRONTEND=noninteractive DEBCONF_NONINTERACTIVE_SEEN=true
     dpkg-reconfigure grub-pc
@@ -22,7 +22,7 @@ if [ "x${PACKER_BUILD_TYPE}" == "xqemu" ]; then
     sed -i 's|GRUB_CMDLINE_LINUX=""|GRUB_CMDLINE_LINUX="consoleblank=0"|g' /etc/default/grub
     sed -i 's|GRUB_CMDLINE_LINUX_DEFAULT="quiet"|GRUB_CMDLINE_LINUX_DEFAULT="consoleblank=0"|g' /etc/default/grub
     update-grub
-fi
+#fi
 
 cat <<EOF > /etc/fstab
 # /etc/fstab: static file system information.
