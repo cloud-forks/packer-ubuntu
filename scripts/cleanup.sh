@@ -27,7 +27,7 @@ rm -rf /tmp/*
 
 uname -a
 export APT_LISTCHANGES_FRONTEND=none
-DEBIAN_FRONTEND=noninteractive apt-get -o Dpkg::Options::="--force-confnew" --force-yes -y install cloud-init
+#DEBIAN_FRONTEND=noninteractive apt-get -o Dpkg::Options::="--force-confnew" --force-yes -y install cloud-init
 DEBIAN_FRONTEND=noninteractive apt-get -o Dpkg::Options::="--force-confnew" --force-yes -fuy purge $(dpkg --list | grep '^rc' |awk '{print $2}')
 DEBIAN_FRONTEND=noninteractive apt-get -o Dpkg::Options::="--force-confnew" --force-yes -fuy purge $(dpkg --list | awk -v image="$(uname -r)" '/linux-image-[0-9]/{if($0 !~ image) print $2 }')
 DEBIAN_FRONTEND=noninteractive apt-get -o Dpkg::Options::="--force-confnew" --force-yes -fuy autoremove --purge
