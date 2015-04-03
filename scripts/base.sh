@@ -15,6 +15,7 @@ apt-get -y --force-yes install curl
 if [ "x${PACKER_BUILD_TYPE}" = "xqemu" ]; then
     apt-get -y --force-yes install grub-pc
     export DEBIAN_FRONTEND=noninteractive DEBCONF_NONINTERACTIVE_SEEN=true
+    sed -i 's|#GRUB_DISABLE_LINUX_UUID=true|GRUB_DISABLE_LINUX_UUID=true|g' /etc/default/grub
     dpkg-reconfigure grub-pc
 fi
 
