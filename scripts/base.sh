@@ -12,7 +12,7 @@ apt-get -y --force-yes update
 apt-get -y --force-yes dist-upgrade
 apt-get -y --force-yes install curl
 
-if [ "x${PACKER_BUILD_TYPE}" = "xqemu" ]; then
+if [ "x${PACKER_BUILD_TYPE}" == "xqemu" ]; then
     apt-get -y --force-yes install grub-pc
     export DEBIAN_FRONTEND=noninteractive DEBCONF_NONINTERACTIVE_SEEN=true
     dpkg-reconfigure grub-pc
