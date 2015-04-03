@@ -1,4 +1,4 @@
-#!/bin/sh -ex
+#!/bin/bash -ex
 
 cat <<EOF > /etc/resolv.conf
 #nameserver 2001:4860:4860::8888
