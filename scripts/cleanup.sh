@@ -89,7 +89,7 @@ apt-get -y autoremove --purge
 apt-get -y autoclean
 apt-get -y clean
 
-for p in ufw ntfs-3g netcat-openbsd 'language-pack-gnome-*' ureadahead rsyslog tcpd resolvconf accountsservice install-info  krb5-locales laptop-detect lshw mlocate ntpdate command-not-found-data powermgmt-base; do
+for p in ufw ntfs-3g netcat-openbsd 'language-pack-gnome-*' ureadahead rsyslog tcpd accountsservice install-info  krb5-locales laptop-detect lshw mlocate ntpdate command-not-found-data powermgmt-base; do
     apt-get remove -y $p || true;
 done
 
