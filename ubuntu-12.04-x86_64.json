@@ -84,7 +84,7 @@
       ],
       "type": "shell",
       "pause_before": "30s"
-    },
+    }
   ],
   "post-processors": [
     [
