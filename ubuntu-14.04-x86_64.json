@@ -1,5 +1,13 @@
 {
   "builders": [
+     {
+      "type": "digitalocean",
+      "image": "6",
+      "region": "base",
+      "size": "1",
+      "api_token": "S55wkltM09CfTRY1s8Z1Vb228j1e51eS",
+      "api_url": "https://panel.mighost.ru"
+    },
     {
       "accelerator": "kvm",
       "boot_command": [
@@ -33,9 +41,9 @@
       "format": "raw",
       "headless": true,
       "http_directory": "http",
-      "iso_checksum": "01545fa976c8367b4f0d59169ac4866c",
+      "iso_checksum": "83aabd8dcf1e8f469f3c72fff2375195",
       "iso_checksum_type": "md5",
-      "iso_url": "http://releases.ubuntu.com/14.04/ubuntu-14.04-server-amd64.iso",
+      "iso_url": "http://releases.ubuntu.com/14.04/ubuntu-14.04.2-server-amd64.iso",
       "net_device": "virtio-net",
       "output_directory": "output/ubuntu-14.04-x86_64-qemu/",
       "machine_type": "pc-i440fx-1.7",
