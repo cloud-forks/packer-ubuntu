@@ -93,6 +93,10 @@
         "format": "bgzf",
         "output": "output/ubuntu-12.04-x86_64-compress/",
         "only": ["qemu"]
+      },
+      {
+        "type": "checksum",
+        "output": "output/ubuntu-12.04-x86_64-compress/"
       }
     ]
   ]
