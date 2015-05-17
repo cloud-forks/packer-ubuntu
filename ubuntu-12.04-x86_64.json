@@ -50,7 +50,7 @@
         ],
         [
           "-drive",
-          "if=none,cache=unsafe,id=drive0,discard=unmap,file=output/ubuntu-12.04-x86_64-qemu/ubuntu-12.04-x86_64.raw"
+          "if=none,cache=unsafe,id=drive0,discard=unmap,file=output/ubuntu-12.04-x86_64-qemu/ubuntu-12.04-x86_64"
         ],
         [
           "-device",

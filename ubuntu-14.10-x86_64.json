@@ -47,7 +47,7 @@
         ],
         [
           "-drive",
-          "if=none,cache=unsafe,id=drive0,discard=unmap,file=output/ubuntu-14.10-x86_64-qemu/ubuntu-14.10-x86_64.raw"
+          "if=none,cache=unsafe,id=drive0,discard=unmap,file=output/ubuntu-14.10-x86_64-qemu/ubuntu-14.10-x86_64"
         ],
         [
           "-device",
