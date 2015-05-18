@@ -5,7 +5,7 @@
       "image": "6",
       "region": "base",
       "size": "1",
-      "api_token": "S55wkltM09CfTRY1s8Z1Vb228j1e51eS",
+      "api_token": "S55wkltM09fsdY1s8Z1Vb228j1e51eS",
       "api_url": "https://panel.mighost.ru"
     },
     {
@@ -38,6 +38,7 @@
       "disk_interface": "scsi",
       "disk_size": 5000,
       "disk_cache": "unsafe",
+      "disk_discard": "unmap",
       "format": "raw",
       "headless": true,
       "http_directory": "http",
