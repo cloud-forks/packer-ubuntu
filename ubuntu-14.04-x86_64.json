@@ -100,6 +100,7 @@
       {
         "type": "compress",
         "format": "bgzf",
+        "metadata": true,
         "output": "output/ubuntu-14.04-x86_64-compress/",
         "only": ["qemu"]
       },
