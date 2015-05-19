@@ -20,7 +20,7 @@ fi
 # Ubuntu 12.04 & 14.04
 if [ -d "/var/lib/dhcp" ]; then
     rm /var/lib/dhcp/*
-fi 
+fi
 
 echo "==> Cleaning up tmp"
 rm -rf /tmp/*
@@ -71,7 +71,7 @@ echo "==> Removing documentation"
 dpkg --list | awk '{ print $2 }' | grep -- '-doc$' | xargs apt-get -y purge
 echo "==> Removing development tools"
 #dpkg --list | grep -i compiler | awk '{ print $2 }' | xargs apt-get -y purge
-#apt-get -y purge cpp gcc g++ 
+#apt-get -y purge cpp gcc g++
 apt-get -y purge build-essential
 echo "==> Removing default system Ruby"
 #apt-get -y purge ruby ri doc
@@ -93,22 +93,13 @@ for p in ufw ntfs-3g netcat-openbsd 'language-pack-gnome-*' ureadahead rsyslog t
     apt-get remove -y $p || true;
 done
 
+find /var/lib/apt/lists/ -type f -delete
+
 # Clean up orphaned packages with deborphan
 apt-get -y install deborphan
 while [ -n "$(deborphan --guess-all --libdevel)" ]; do
     deborphan --guess-all --libdevel | xargs apt-get -y purge
 done
 apt-get -y purge deborphan dialog
-
-echo "==> Removing man pages"
-rm -rf /usr/share/man/*
-echo "==> Removing APT files"
-find /var/lib/apt -type f | xargs rm -f
-echo "==> Removing anything in /usr/src"
-rm -rf /usr/src/*
-echo "==> Removing any docs"
-rm -rf /usr/share/doc/*
-echo "==> Removing caches"
-find /var/cache -type f -exec rm -rf {} \;
 
 fstrim -v / || echo dummy
