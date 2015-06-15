@@ -69,6 +69,11 @@
       ],
       "type": "shell",
       "pause_before": "30s"
+    },
+    {
+      "type": "file",
+      "source": "files/80-hotplug-cpu-mem.rules",
+      "destination": "/etc/udev/rules.d/80-hotplug-cpu-mem.rules"
     }
   ],
   "post-processors": [
