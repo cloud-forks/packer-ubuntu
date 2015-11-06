@@ -1,4 +1,4 @@
 #!/bin/sh -x
 
-reboot
+reboot -f
 
